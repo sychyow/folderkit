@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Kronshtadt explorer"
+            id="ru.kronshtadt.tc.explorer.commands">
+      </category>
+      <command
+            name="%createFolders.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.createFolders">
+      </command>
+      <command
+            name="%createItems.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.createItems">
+      </command>
+      <command
+            name="%loadItems.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.loadItems">
+      </command>
+      <command
+            name="%compareFolders.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.compareFolders">
+      </command>
+      <command
+            name="%renameItem.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.renameItem">
+      </command>
+      <command
+            name="%renameProcess.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.renameProcess">
+      </command>
+      <command
+            name="%normaliseItem.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.normaliseItem">
+      </command>
+      <command
+            name="%importStructure.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.importStructure">
+      </command>
+      <command
+            name="%exportStructure.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.exportStructure">
+      </command>
+      <command
+            name="%linkObjects.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.linkObjects">
+      </command>
+      <command
+            name="%setAttrs.NAME"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.setAttrs">
+      </command>
+      
+      
+      <command
+            name="Руководство пользователя"
+            categoryId="ru.kronshtadt.tc.explorer.commands"
+            id="ru.kronshtadt.tc.explorer.manual">
+      </command>            
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.createFolders"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.createItems"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.loadItems"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.linkObjects"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.setAttrs"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.compareFolders"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.renameItem"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.renameProcess"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>            
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.normaliseItem"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.importStructure"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.exportStructure"
+            class="ru.kronshtadt.tc.folderkit.FolderkitHandler">
+      </handler>
+      <handler
+            commandId="ru.kronshtadt.tc.explorer.manual"
+            class="ru.kronshtadt.tc.folderkit.ManualHandler">
+      </handler>       
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+       <menuContribution locationURI="menu:tools?after=group1">
+            <menu id="tools.FoldersKit" label="%menuMain.NAME" icon="icons/FolderKit.png">
+            <separator name="groupFK" visible="true"/>
+            </menu>
+       </menuContribution>
+       <menuContribution locationURI="menu:tools.FoldersKit">
+            <command commandId="ru.kronshtadt.tc.explorer.createFolders">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.createFolders"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="ru.kronshtadt.tc.explorer.createItems">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.createItems"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="ru.kronshtadt.tc.explorer.loadItems">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.loadItems"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="ru.kronshtadt.tc.explorer.linkObjects">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.linkObjects"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="ru.kronshtadt.tc.explorer.setAttrs">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.setAttrs"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            
+            <command commandId="ru.kronshtadt.tc.explorer.compareFolders">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.compareFolders"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="ru.kronshtadt.tc.explorer.renameItem">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.renameItem"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="ru.kronshtadt.tc.explorer.normaliseItem">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.normaliseItem"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="ru.kronshtadt.tc.explorer.renameProcess">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.renameProcess"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <menu id="tools.FoldersKit.SPb" label="Импорт/экспорт" >
+            <separator name="groupFK" visible="true"/>
+            </menu>         
+            <separator  name="folderkit-help" visible="true" />
+            <command commandId="ru.kronshtadt.tc.explorer.manual">
+            <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.createFolders"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution locationURI="menu:tools.FoldersKit.SPb">
+        	 <command commandId="ru.kronshtadt.tc.explorer.importStructure">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.importStructure"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+             <command commandId="ru.kronshtadt.tc.explorer.exportStructure">
+                <visibleWhen>
+                    <and>
+                        <reference
+                            definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="ru.kronshtadt.tc.explorer.exportStructure"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+   </extension>
+</plugin>
